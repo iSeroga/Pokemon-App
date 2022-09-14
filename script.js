@@ -7,9 +7,7 @@ const pokeShop = document.querySelector('.poke-shop');
 window.onload = async e => {
     e.preventDefault();
     const { results } = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10`).then(res => res.json());
-    // console.log({list});
-    const res = await dibilBlyat(results);
-    const list = new PokemonList(resgitgit).render();
+    const list = await new PokemonList(results).render();
     pokeShop.innerHTML = list;
 };
 
@@ -21,7 +19,3 @@ btnSearch.addEventListener("click", async (e) => {
     const pokemon = new Pokemon(name, stats, sprites).render();
     pokeShop.innerHTML = pokemon;
 });
-
-const dibilBlyat = async (list) => {
-    return await Promise.all(list.map(({url}) => fetch(url).then(res => res.json())));
-};
