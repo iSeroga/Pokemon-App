@@ -13,21 +13,27 @@ class Pokemon {
             baseStat[name] = base_stat;
         }
         return baseStat;
+        
     }
+
+
+
 
     render() {
         const { hp, attack, defense } = this.unpackStat();
+        const {front_default } = this.sprites;
+        const basePicture  = front_default;
         return `
         <div class="pokemonBox">
+            <img src="${basePicture}" class="pokePhoto" ><br>
             <div class="statsBox">
                 <div class="hp">Hp: ${hp}</div><br>
                 <div class="attack">Attack: ${attack}</div><br>
-                <div class="defense">Defence: ${defense}</div><br>
+                <div class="defense">Defence: ${defense}</div><br><br>
             </div>
         </div>
         `;
     }
-
 }
 
 export default Pokemon; 

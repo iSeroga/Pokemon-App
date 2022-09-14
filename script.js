@@ -16,6 +16,6 @@ btnSearch.addEventListener("click", async (e) => {
     const pokemoneName = searchValue.value.toLowerCase();
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemoneName}`).then(res => res.json());
     const { name, stats, sprites } = data;
-    const pokemon = new Pokemon(name, stats, sprites).render();
-    pokeShop.innerHTML = pokemon;
+    const pokemon = new Pokemon(name, stats, sprites);
+    pokeShop.innerHTML = pokemon.render();
 });
