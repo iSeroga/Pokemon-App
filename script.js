@@ -1,15 +1,21 @@
 import Pokemon from './components/Pokemon/Pokemon.js';
-import PokemonList from './components/PokemoList/PokemonList.js';
+import pokemonService from './services/pokemon.service.js';
 const btnSearch = document.querySelector('.btnSearch');
 const searchValue = document.querySelector('.search-value');
 const pokeShop = document.querySelector('.poke-shop');
-
+const addMOrePokemons = document.querySelector('.add-more-pokemons');
+let offset = 10;
 window.onload = async e => {
     e.preventDefault();
-    const { results } = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10`).then(res => res.json());
-    const list = await new PokemonList(results).render();
+    const list = await pokemonService.getAll();
     pokeShop.innerHTML = list;
 };
+
+addMOrePokemons.addEventListener('click', async (e) => {
+    e.preventDefault();
+    offset += 10;
+    await pokemonService.getAll(offset);
+});
 
 btnSearch.addEventListener("click", async (e) => {
     e.preventDefault();

@@ -18,7 +18,7 @@ class PokemonList {
 	// создает массив HTML кода покемонов
 	async makePokemonList() {
 		const data = await this.fetchPokemos();
-
+		// data.map(console.log);
 		return data.map(({ name, stats, sprites }) => {
 			const pokemon = new Pokemon(name, stats, sprites);
 			return pokemon.render();
@@ -27,12 +27,19 @@ class PokemonList {
 
 	async render() {
 		const pokemons = await this.makePokemonList();
-		
-		return `
-      <div class="pokemon-list">
-				${pokemons}
+		const pokemonList = document.querySelector('.pokemon-list');
+		const pokeShop = document.querySelector('.poke-shop');
+		const list = `
+      		<div class="pokemon-list">
+				${pokemons.join('')} 
 			</div>
-    `;
+    	`;
+		if (pokemonList) {
+			pokemonList.innerHTML += pokemons.join('');
+			return;
+		} else { 
+			return list;
+		}
 	}
 }
 

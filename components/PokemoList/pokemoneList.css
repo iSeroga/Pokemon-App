@@ -1,0 +1,25 @@
+poke-shop{
+    width: 1040px;
+}
+.pokemon-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+.pokemonBox > img{ 
+   /* asdad */
+   background-color: azure;
+ }
+.pokemonBox{
+    width: 250px;
+    text-align: center;
+    margin: auto;
+    border: solid black 10px ;
+    margin: 10px 5px;
+    
+}
+.pokemonBox:hover{
+    scale: 1.2;
+}
